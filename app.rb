@@ -3,7 +3,7 @@ require 'sinatra'
 require 'active_record'
 require 'json'
 
-ActiveRecord::establish_connection(
+ActiveRecord::Base.establish_connection(
     :adapter => 'sqlite3',
     :database => 'todo.sqlite3.db'
 )
@@ -17,4 +17,8 @@ end
 
 get '/tasks' do
     Task.all().to_json
+end
+
+get '/tasks/:id' do
+    Task.find(params[:id]).to_json
 end
