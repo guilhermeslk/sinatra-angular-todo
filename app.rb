@@ -30,10 +30,10 @@ post '/tasks' do
         halt 400, 'Malformed JSON'
     end
 
-    @task = Task.create([
+    @task = Task.create(
         'description' => @data['description'],
         'done' => false 
-    ])
+    )
 
     @task.to_json
 end
