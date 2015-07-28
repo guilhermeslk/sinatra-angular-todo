@@ -11,3 +11,6 @@ ActiveRecord::establish_connection(
 class Task < ActiveRecord::Base
 end
 
+get '/' do
+	erb :index
+end
