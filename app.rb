@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
 end
 
 get '/' do
-	erb :index
+    erb :index
 end
 
 get '/tasks' do
