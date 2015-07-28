@@ -22,3 +22,18 @@ end
 get '/tasks/:id' do
     Task.find(params[:id]).to_json
 end
+
+post '/tasks' do
+    @data = JSON.parse(request.body.read)
+
+    if @data['description'].nil?
+        halt 400, 'Malformed JSON'
+    end
+
+    @task = Task.create([
+        'description' => @data['description'],
+        'done' => false 
+    ])
+
+    @task.to_json
+end
