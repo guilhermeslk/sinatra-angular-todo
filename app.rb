@@ -14,3 +14,7 @@ end
 get '/' do
 	erb :index
 end
+
+get '/tasks' do
+    Task.all().to_json
+end
