@@ -17,6 +17,7 @@
                 <h1>Tasks</h1>
                 <ul class="list-unstyled">
                     <li ng-class="{ done: task.done }" ng-repeat="task in tasks">
+                      <input ng-checked="task.done" ng-click="updateTask(task)"type="checkbox">
                       {{ task.description }}
                     </li>
                 </ul>
