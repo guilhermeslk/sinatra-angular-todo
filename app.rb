@@ -37,3 +37,19 @@ post '/tasks' do
 
     @task.to_json
 end
+
+patch '/tasks/:id' do
+    @task = Task.find(params[:id])
+
+    if @task.nil?
+        halt 404, 'Task not found'
+    end
+
+    @data = JSON.parse(request.body.read)
+
+    @task.description = @data['description']
+    @task.done = @data['done']
+
+    @task.save
+    @task.to_json
+end
