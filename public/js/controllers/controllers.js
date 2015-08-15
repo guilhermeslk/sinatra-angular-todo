@@ -14,4 +14,11 @@ todoControllers.controller('TaskList', ['$scope', 'Task', function($scope, Task)
         $scope.tasks = Task.query();
         $scope.description = '';
     }
+
+    $scope.updateTask = function(task) {
+
+        task.done = !task.done;
+
+        Task.update({ id: task.id }, task);;
+    }
 }]);
